@@ -1,32 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-import PieChart from './components/PieChart';
-import dataBase from './/data_base/spotify_data_history.json';
+import React, { useState } from 'react';
+import FilteredPieChart from './components/FilteredPieChart';
+import DetailList from './components/detailList';
+import FiltroGraf from './components/filtroGraf';
 
-function App() {
+const App = () => {
+  const [filters, setFilters] = useState({
+    turno: null,
+    estacao: null,
+    topMusicas: null,
+    topArtistas: null,
+  });
+
+  const updateFilters = (key, value) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [key]: value,
+    }));
+  };
+
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
+    <div style={{ backgroundColor: '#222', color: '#fff', height: '100vh', padding: '20px' }}>
+      <header style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <h1>Simone</h1>
+      </header>
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+        <FiltroGraf filters={filters} onFilterChange={updateFilters} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <FilteredPieChart filters={filters} />
+        <DetailList filters={filters} />
+      </div>
+    </div>
+  );
+};
 
-        <div className="App">
-          <h1>Estatísticas</h1>
-          <PieChart />
-        </div>
-      );
-    }
-    
-    export default App;
+export default App;

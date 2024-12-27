@@ -1,11 +1,13 @@
+//modelo grafico pizza
+
 import React from 'react';
 import ReactEcharts from 'echarts-for-react';
 
-const PieChart = () => {
+const PieChart = ({ data }) => {
   // Configuração do gráfico
   const options = {
     title: {
-      text: 'Quando é que o utilizador mais ouve música? (horas do dia)',
+      text: 'Estatísticas de Reprodução',
       left: 'center',
     },
     tooltip: {
@@ -17,16 +19,13 @@ const PieChart = () => {
     },
     series: [
       {
-        name: 'Acesso à Internet',
+        name: 'Reproduções',
         type: 'pie',
         radius: '50%',
-        data: [
-          { value: 1048, name: 'x' },
-          { value: 735, name: 'c' },
-          { value: 580, name: 'b' },
-          { value: 484, name: 'a' },
-          { value: 300, name: 'd' },
-        ],
+        data: data.map((item) => ({
+          value: item.value,
+          name: item.name,
+        })),
         emphasis: {
           itemStyle: {
             shadowBlur: 10,
