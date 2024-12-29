@@ -10,7 +10,7 @@ const FiltroGraf = ({ filters, onFilterChange }) => {
 
   return (
     <div style={{ display: 'flex', gap: '10px' }}>
-      <select onChange={(e) => handleFilterChange('turno', e)} value={filters.turno || ''}>
+      <select onChange={(e) => handleFilterChange('turno', e)} value={filters.turno || ''} disabled={filters.estacao || filters.topFilter}>
         <option value="">Turno</option>
         <option value="manhã">Manhã</option>
         <option value="tarde">Tarde</option>
@@ -18,7 +18,7 @@ const FiltroGraf = ({ filters, onFilterChange }) => {
         <option value="madrugada">Madrugada</option>
       </select>
 
-      <select onChange={(e) => handleFilterChange('estacao', e)} value={filters.estacao || ''}>
+      <select onChange={(e) => handleFilterChange('estacao', e)} value={filters.estacao || ''} disabled={filters.turno}>
         <option value="">Estação</option>
         <option value="verão">Verão</option>
         <option value="inverno">Inverno</option>
@@ -26,16 +26,10 @@ const FiltroGraf = ({ filters, onFilterChange }) => {
         <option value="primavera">Primavera</option>
       </select>
 
-      <select onChange={(e) => handleFilterChange('topMusicas', e)} value={filters.topMusicas || ''}>
-        <option value="">Top Música</option>
-        <option value="1">Top 1</option>
-        <option value="5">Top 5</option>
-      </select>
-
-      <select onChange={(e) => handleFilterChange('topArtistas', e)} value={filters.topArtistas || ''}>
-        <option value="">Top Artista</option>
-        <option value="1">Top 1</option>
-        <option value="3">Top 3</option>
+      <select onChange={(e) => handleFilterChange('topFilter', e)} value={filters.topFilter || ''} disabled={filters.turno}>
+        <option value="">Top Filtro</option>
+        <option value="musica">Top Música</option>
+        <option value="artista">Top Artista</option>
       </select>
     </div>
   );

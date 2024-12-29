@@ -1,22 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from "react";
 import FilteredPieChart from './components/FilteredPieChart';
 import DetailList from './components/detailList';
 import FiltroGraf from './components/filtroGraf';
+import dbData from './data_base/data.json';
 
 const App = () => {
   const [filters, setFilters] = useState({
     turno: null,
     estacao: null,
-    topMusicas: null,
-    topArtistas: null,
+    topFilter: null
   });
-
   const updateFilters = (key, value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       [key]: value,
     }));
+    if (key === 'turno') {
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        estacao: null,
+        topFilter: null,
+      }));
+    } else {
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        turno: null,
+      }));
+    }
   };
+
+  const [grafList, setGrafList] = useState([]);
+  const updateChartData = useCallback((data) => {
+    setGrafList(data);
+  }, []);
 
   return (
     <div style={{ backgroundColor: '#222', color: '#fff', height: '100vh', padding: '20px' }}>
@@ -27,8 +43,8 @@ const App = () => {
         <FiltroGraf filters={filters} onFilterChange={updateFilters} />
       </div>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <FilteredPieChart filters={filters} />
-        <DetailList filters={filters} />
+        <FilteredPieChart filters={filters} dbData={dbData} onChartDataUpdate={updateChartData} />
+        <DetailList filters={filters} grafList={grafList} />
       </div>
     </div>
   );
