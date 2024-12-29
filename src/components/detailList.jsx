@@ -1,23 +1,26 @@
 import React from 'react';
 
-const DetailList = ({ filters, grafList }) => {
-  if (!filters.topFilter) {
-    return
-  }
+const DetailList = ({ filters }) => {
+  const data = [
+    { estacao: 'Verão', reproducoes: '04:01' },
+    { estacao: 'Inverno', reproducoes: '04:01' },
+    { estacao: 'Outono', reproducoes: '04:01' },
+    { estacao: 'Primavera', reproducoes: '04:01' },
+  ];
 
   return (
-    <table style={{ width: '80%', margin: '20px auto', backgroundColor: 'rgb(34, 34, 34)', color: '#fff', borderCollapse: 'collapse',fontFamily: "Afacad" }}>
+    <table style={{ width: '80%', margin: '20px auto', backgroundColor: '#333', color: '#fff', borderCollapse: 'collapse' }}>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Reproductions</th>
+          <th>Estação</th>
+          <th>Reproduções</th>
         </tr>
       </thead>
       <tbody>
-        {grafList.map((item, index) => (
+        {data.map((item, index) => (
           <tr key={index} style={{ textAlign: 'center' }}>
-            <td>{item.name}</td>
-            <td>{item.value}</td>
+            <td>{item.estacao}</td>
+            <td>{item.reproducoes}</td>
           </tr>
         ))}
       </tbody>

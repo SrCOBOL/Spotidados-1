@@ -10,26 +10,32 @@ const FiltroGraf = ({ filters, onFilterChange }) => {
 
   return (
     <div style={{ display: 'flex', gap: '10px' }}>
-      <select onChange={(e) => handleFilterChange('turno', e)} value={filters.turno || ''} disabled={filters.estacao || filters.topFilter}>
-        <option value="">Shift</option>
-        <option value="Morning">Morning</option>
-        <option value="Afternoon">Afternoon</option>
-        <option value="Night">Night</option>
-        <option value="Early morning">Early morning</option>
+      <select onChange={(e) => handleFilterChange('turno', e)} value={filters.turno || ''}>
+        <option value="">Turno</option>
+        <option value="manhã">Manhã</option>
+        <option value="tarde">Tarde</option>
+        <option value="noite">Noite</option>
+        <option value="madrugada">Madrugada</option>
       </select>
 
-      <select onChange={(e) => handleFilterChange('estacao', e)} value={filters.estacao || ''} disabled={filters.turno}>
-        <option value="">Season</option>
-        <option value="Summer">Summer</option>
-        <option value="Winter">Winter</option>
-        <option value="Fall">Fall</option>
-        <option value="Spring">Spring</option>
+      <select onChange={(e) => handleFilterChange('estacao', e)} value={filters.estacao || ''}>
+        <option value="">Estação</option>
+        <option value="verão">Verão</option>
+        <option value="inverno">Inverno</option>
+        <option value="outono">Outono</option>
+        <option value="primavera">Primavera</option>
       </select>
 
-      <select onChange={(e) => handleFilterChange('topFilter', e)} value={filters.topFilter || ''} disabled={filters.turno}>
-        <option value="">Top</option>
-        <option value="musica">Top Music</option>
-        <option value="artista">Top Artist</option>
+      <select onChange={(e) => handleFilterChange('topMusicas', e)} value={filters.topMusicas || ''}>
+        <option value="">Top Música</option>
+        <option value="1">Top 1</option>
+        <option value="5">Top 5</option>
+      </select>
+
+      <select onChange={(e) => handleFilterChange('topArtistas', e)} value={filters.topArtistas || ''}>
+        <option value="">Top Artista</option>
+        <option value="1">Top 1</option>
+        <option value="3">Top 3</option>
       </select>
     </div>
   );

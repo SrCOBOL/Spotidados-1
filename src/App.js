@@ -1,51 +1,67 @@
-import React, { useState, useCallback } from "react";
-import FilteredPieChart from './components/FilteredPieChart';
-import DetailList from './components/detailList';
-import FiltroGraf from './components/filtroGraf';
-import dbData from './data_base/data.json';
+import React, { useState } from "react";
+import Auth from "./components/Login";
+import LandingPage from "./components/landingpage";
+import FiltroGraf from "./components/filtroGraf";
+import FilteredPieChart from "./components/FilteredPieChart";
+import DetailList from "./components/detailList";
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [filters, setFilters] = useState({
     turno: null,
     estacao: null,
-    topFilter: null
+    topMusicas: null,
+    topArtistas: null,
   });
+
+  const handleLogOff = () => {
+    setIsLoggedIn(false);
+  };
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
   const updateFilters = (key, value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       [key]: value,
     }));
-    if (key === 'turno') {
-      setFilters((prevFilters) => ({
-        ...prevFilters,
-        estacao: null,
-        topFilter: null,
-      }));
-    } else {
-      setFilters((prevFilters) => ({
-        ...prevFilters,
-        turno: null,
-      }));
-    }
   };
 
-  const [grafList, setGrafList] = useState([]);
-  const updateChartData = useCallback((data) => {
-    setGrafList(data);
-  }, []);
-
   return (
-    <div style={{ backgroundColor: '#222',fontFamily: "Afacad", color: '#fff', height: 'auto', padding: '20px' }}>
-      <header style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <h1>Hello User...</h1>
-      </header>
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px',fontFamily: "Afacad"}}>
-        <FiltroGraf filters={filters} onFilterChange={updateFilters} />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column',fontFamily: "Afacad"}}>
-        <FilteredPieChart filters={filters} dbData={dbData} onChartDataUpdate={updateChartData} />
-        <DetailList filters={filters} grafList={grafList} />
-      </div>
+    <div>
+      {isLoggedIn ? (
+        <div
+          style={{
+            backgroundColor: "#222",
+            color: "#fff",
+            height: "100vh",
+            padding: "20px",
+          }}
+        >
+          {/*---------------------- Renderizando da página de dados --------------------*/}
+          <LandingPage onLogOff={handleLogOff} />
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "20px",
+            }}
+          >
+            <FiltroGraf filters={filters} onFilterChange={updateFilters} />
+          </div>
+
+          {/* -----------------------------Gráficos e detalhes ------------------------*/}
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <FilteredPieChart filters={filters} />
+            <DetailList filters={filters} />
+          </div>
+        </div>
+      ) : (
+        <Auth onLogin={handleLogin} />
+      )}
     </div>
   );
 };

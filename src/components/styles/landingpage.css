@@ -1,0 +1,208 @@
+.landingpage {
+  font-family: "Afacad", sans-serif;
+  background: linear-gradient(90deg, #2eced3 0%, #29333f 100%);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.landingpage-header {
+  background: #000;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  border-radius: 15px;
+  color: #ffffff;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo img {
+  height: 40px;
+}
+
+.header-home {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header-home button {
+  background: #30cbd0;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background 0.3s;
+}
+
+.header-home button:hover {
+  background: #1ea5a8;
+}
+
+.header-logoff-social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header-social-logo {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.header-logoff-button {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.landingpage-container {
+  background: #695858;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.header-greeting-box {
+  background: #2a2626;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 30px;
+  width: 95%;
+  text-align: center;
+}
+
+.header-greeting-box h1 {
+  font-size: 48px;
+  font-weight: 400;
+  margin: 0;
+  color: #ffffff;
+}
+
+.landingpage-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.landingpage-stat-item {
+  background: #30cbd0;
+  color: #000;
+  border-radius: 40px;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+.landingpage-most-played {
+  margin-top: 30px;
+  padding: 15px;
+  background: #30cbd0;
+  border-radius: 40px;
+  text-align: center;
+  color: #000;
+  width: 95%;
+}
+
+.landingpage-most-played h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.landingpage-most-played p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.average-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.average-content {
+  background: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  color: #000;
+}
+
+.average-content h2 {
+  margin-bottom: 10px;
+}
+
+.average-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.average-content button {
+  background: #2eced3;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.average-content button:hover {
+  background: #1ea5a8;
+}
+
+.landingpage-footer {
+  margin-top: auto;
+  font-size: 16px;
+  text-align: center;
+  color: #ffffff;
+  background: #211d1d;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 15px;
+  opacity: 0.8;
+}
