@@ -6,11 +6,11 @@ const DetailList = ({ filters, grafList }) => {
   }
 
   return (
-    <table style={{ width: '80%', margin: '20px auto', backgroundColor: '#333', color: '#fff', borderCollapse: 'collapse' }}>
+    <table style={{ width: '80%', margin: '20px auto', backgroundColor: 'rgb(34, 34, 34)', color: '#fff', borderCollapse: 'collapse',fontFamily: "Afacad" }}>
       <thead>
         <tr>
-          <th>Nome</th>
-          <th>Reproduções</th>
+          <th>Name</th>
+          <th>Reproductions</th>
         </tr>
       </thead>
       <tbody>

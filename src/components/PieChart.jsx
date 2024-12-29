@@ -7,7 +7,7 @@ const PieChart = ({ data }) => {
   // Configuração do gráfico
   const options = {
     title: {
-      text: 'Estatísticas de Reprodução',
+      text: 'Reproduction statistics',
       left: 'center',
     },
     tooltip: {
@@ -16,7 +16,7 @@ const PieChart = ({ data }) => {
     legend: {
       orient: 'horizontal',
       top: 'bottom',
-      left: 'center',
+      left: 'bottom',
     },
     series: [
       {

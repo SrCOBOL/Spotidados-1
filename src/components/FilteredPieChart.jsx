@@ -11,12 +11,13 @@ const FilteredPieChart = ({ filters, dbData, onChartDataUpdate  }) => {
     const day = date.getUTCDate(); // Dia do mês
 
     if ((month === 12 && day >= 21) || (month <= 3 && day <= 20))
-      return "inverno";
+      return "Winter";
     if ((month === 3 && day >= 21) || (month <= 6 && day <= 20))
-      return "primavera";
-    if ((month === 6 && day >= 21) || (month <= 9 && day <= 20)) return "verão";
+      return "Spring";
+    if ((month === 6 && day >= 21) || (month <= 9 && day <= 20)) 
+      return "Summer";
     if ((month === 9 && day >= 21) || (month <= 12 && day <= 20))
-      return "outono";
+      return "Fall";
 
     return null; // Caso algo inesperado aconteça
   };
@@ -39,10 +40,10 @@ const FilteredPieChart = ({ filters, dbData, onChartDataUpdate  }) => {
       ];
     } else {
       const mappedData = [
-        { value: data.manha.length, name: "Manhã" },
-        { value: data.tarde.length, name: "Tarde" },
-        { value: data.noite.length, name: "Noite" },
-        { value: data.madrugada.length, name: "Madrugada" },
+        { value: data.manha.length, name: "Morning" },
+        { value: data.tarde.length, name: "Afternoon" },
+        { value: data.noite.length, name: "Night" },
+        { value: data.madrugada.length, name: "Early morning" },
       ];
       return mappedData.filter((item) => {
         if (!filters.turno) return true;

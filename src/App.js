@@ -35,14 +35,14 @@ const App = () => {
   }, []);
 
   return (
-    <div style={{ backgroundColor: '#222', color: '#fff', height: '100vh', padding: '20px' }}>
+    <div style={{ backgroundColor: '#222',fontFamily: "Afacad", color: '#fff', height: 'auto', padding: '20px' }}>
       <header style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <h1>Simone</h1>
+        <h1>Hello User...</h1>
       </header>
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px',fontFamily: "Afacad"}}>
         <FiltroGraf filters={filters} onFilterChange={updateFilters} />
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: 'flex', flexDirection: 'column',fontFamily: "Afacad"}}>
         <FilteredPieChart filters={filters} dbData={dbData} onChartDataUpdate={updateChartData} />
         <DetailList filters={filters} grafList={grafList} />
       </div>
