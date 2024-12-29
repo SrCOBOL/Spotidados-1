@@ -6,7 +6,7 @@ const DetailList = ({ filters, grafList }) => {
   }
 
   return (
-    <table style={{ width: '80%', margin: '20px auto', backgroundColor: 'rgb(34, 34, 34)', color: '#fff', borderCollapse: 'collapse',fontFamily: "Afacad" }}>
+    <table style={{ width: '100%', margin: '20px auto', backgroundColor: 'rgb(34, 34, 34)', color: '#fff', borderCollapse: 'collapse',fontFamily: "Afacad" }}>
       <thead>
         <tr>
           <th>Name</th>
@@ -15,7 +15,7 @@ const DetailList = ({ filters, grafList }) => {
       </thead>
       <tbody>
         {grafList.map((item, index) => (
-          <tr key={index} style={{ textAlign: 'center' }}>
+          <tr key={index} style={{ textAlign: 'center', fontFamily:"Afacad" }}>
             <td>{item.name}</td>
             <td>{item.value}</td>
           </tr>
