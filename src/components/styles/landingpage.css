@@ -7,13 +7,12 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  width: 1140px;
-  height: 800px;
+  box-sizing: border-box; /* Ensure padding doesn't break layout */
 }
 
 .landingpage-header {
   background: #000;
-  width: 100%;
+  width: 100%; /* Ensure the header stretches the full width */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +22,7 @@
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  width: 1000px;
+  box-sizing: border-box; /* Ensure padding doesn't break layout */
 }
 
 .header-logo {
@@ -32,13 +31,11 @@
 }
 
 .header-logo img {
-  height: 80px;
+  height: 40px;
 }
 
 .header-home {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static; /* Remove absolute positioning */
 }
 
 .header-home button {
@@ -65,7 +62,7 @@
 }
 
 .header-social-logo {
-  height: 30px;
+  height: 40px;
   margin-right: 10px;
 }
 
@@ -208,22 +205,4 @@
   padding: 10px 0;
   border-radius: 15px;
   opacity: 0.8;
-  width: 1000px;
-}
-
-.button:hover {
-  background: #1ea5a8;
-}
-
-.button {
-  background: #30cbd0;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: background 0.3s;
 }
