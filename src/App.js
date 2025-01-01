@@ -1,19 +1,22 @@
 import React, { useState, useCallback } from "react";
-import FilteredPieChart from './components/FilteredPieChart';
-import DetailList from './components/detailList';
-import FiltroGraf from './components/filtroGraf';
-import dbData from './data_base/data.json';
+import FilteredPieChart from "./components/FilteredPieChart";
+import DetailList from "./components/detailList";
+import FiltroGraf from "./components/filtroGraf";
+import dbData from "./data_base/data.json";
 import Auth from "./components/Login";
 import LandingPage from "./components/landingpage";
+import MusicStats from "./components/MusicStats";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentView, setCurrentView] = useState("login"); // "login", "landingPage", "details"
   const [filters, setFilters] = useState({
-    turno: null,
-    estacao: null,
-    topFilter: null
+    shift: null,
+    station: null,
+    topFilter: null,
   });
+
+  const [isTop100View, setIsTop100View] = useState(false); // State to control Top 100 view
 
   const handleLogOff = () => {
     setIsLoggedIn(false);
@@ -24,23 +27,24 @@ const App = () => {
     setIsLoggedIn(true);
     setCurrentView("landingPage");
   };
-  document.body.style = 'background: rgb(34,34,34)';
+
+  document.body.style = "background: rgb(34,34,34)";
 
   const updateFilters = (key, value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       [key]: value,
     }));
-    if (key === 'turno') {
+    if (key === "shift") {
       setFilters((prevFilters) => ({
         ...prevFilters,
-        estacao: null,
+        station: null,
         topFilter: null,
       }));
     } else {
       setFilters((prevFilters) => ({
         ...prevFilters,
-        turno: null,
+        shift: null,
       }));
     }
   };
@@ -52,7 +56,6 @@ const App = () => {
 
   const safeDbData = Array.isArray(dbData) ? dbData : [];
 
-  // Render views based on the current state
   if (currentView === "login") {
     return <Auth onLogin={handleLogin} />;
   }
@@ -68,10 +71,21 @@ const App = () => {
         }}
       >
         <LandingPage onLogOff={handleLogOff} />
-        <div style={{ textAlign: "center", marginTop: "20px", }}>
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
           <button
             onClick={() => setCurrentView("details")}
-            className="button" // Adicionando a classe 'button'
+            style={{
+              backgroundColor: "#30cbd0",
+              color: "#222",
+              fontSize: "16px",
+              padding: "12px 24px",
+              border: "none",
+              borderRadius: "8px",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+            }}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#27a7a7")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#30cbd0")}
           >
             More Details
           </button>
@@ -106,18 +120,47 @@ const App = () => {
         >
           Back to Landing Page
         </button>
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "20px",
+          }}
+        >
           <FiltroGraf filters={filters} onFilterChange={updateFilters} />
         </div>
+
+        <div style={{ textAlign: "center", marginTop: "20px" }}>
+          <button
+            onClick={() => setIsTop100View(!isTop100View)}
+            className="button"
+          >
+            {isTop100View ? "View Charts" : "View Top 100"}
+          </button>
+        </div>
+
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <FilteredPieChart filters={filters} dbData={safeDbData} onChartDataUpdate={updateChartData} />
-          <DetailList filters={filters} grafList={grafList} />
+          {isTop100View ? (
+            <>
+              <h2>Top 100 Artists/Tracks</h2>
+              <MusicStats />
+            </>
+          ) : (
+            <>
+              <FilteredPieChart
+                filters={filters}
+                dbData={safeDbData}
+                onChartDataUpdate={updateChartData}
+              />
+              <DetailList filters={filters} grafList={grafList} />
+            </>
+          )}
         </div>
       </div>
     );
   }
 
-  return null; // Fallback (should never hit this)
+  return null;
 };
 
 export default App;
