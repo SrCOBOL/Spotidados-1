@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #211D1D;
+  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,4 +37,16 @@
   }
 }
 
+.button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
+.button:hover {
+  background-color: #45a049;
+}
