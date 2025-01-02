@@ -12,14 +12,14 @@ const LandingPage = ({ onLogOff }) => {
     minutesListened: 0,
     mostPlayedSong: { title: "", plays: 0 },
   });
-  const [averageHours, setAverageHours] = useState(null);
+  const [averageMinutes, setAverageMinutes] = useState(null);
   const [showAverage, setShowAverage] = useState(false);
 
   useEffect(() => {
     const processedStats = processMusicData(data);
     setStats(processedStats);
-    const average = calculateAverageHours(processedStats.minutesListened);
-    setAverageHours(average);
+    const average = calculateAverageMinutes(processedStats.minutesListened);
+    setAverageMinutes(average);
   }, []);
 
   const processMusicData = (data) => {
@@ -67,12 +67,12 @@ const LandingPage = ({ onLogOff }) => {
     };
   };
 
-  const calculateAverageHours = (minutesListened) => {
-    const totalHours = minutesListened / 60;
+  const calculateAverageMinutes = (minutesListened) => {
+    const totalMinutes = minutesListened;
     const days = data.length
-      ? Math.ceil((new Date() - new Date(data[0].ts)) / (1000 * 60 * 60 * 24))
+      ? Math.round((new Date() - new Date(data[0].ts)) / (1000 * 60 * 60 * 24))
       : 1;
-    return (totalHours / days).toFixed(2);
+    return (totalMinutes / days).toFixed(0);
   };
 
   const handleToggleAverage = () => {
@@ -86,7 +86,7 @@ const LandingPage = ({ onLogOff }) => {
           <img src={imageLogo} alt="Logo" />
         </div>
         <div className="header-home">
-          <button onClick={() => console.log("Voltar ao início")}>HOME</button>
+          <button onClick={() => console.log("Go Back")}>HOME</button>
         </div>
         <div className="header-logoff-social">
           <img
@@ -104,16 +104,16 @@ const LandingPage = ({ onLogOff }) => {
         <div className="header-greeting-box" onClick={handleToggleAverage}>
           {showAverage ? (
             <div>
-              <h1>{averageHours} horas/dia</h1>
+              <h1>{averageMinutes} minutes/day</h1>
               <p style={{ cursor: "pointer", color: "#999" }}>
-                Click here to see "Hello User"
+                Click here to see "Hello Tiago" again
               </p>
             </div>
           ) : (
             <div>
-              <h1>Hello User</h1>
+              <h1>Hello Tiago</h1>
               <p style={{ cursor: "pointer", color: "#999" }}>
-                Click here to see average hours spent on App
+                Click here to see the average time spent on app
               </p>
             </div>
           )}
@@ -122,9 +122,9 @@ const LandingPage = ({ onLogOff }) => {
         <div className="landingpage-stats">
           {[
             { label: "Total Plays", value: stats.totalPlays },
-            { label: "All Musics", value: stats.songsListened },
-            { label: "All Artists", value: stats.differentArtists },
-            { label: "Listened Time", value: stats.minutesListened },
+            { label: "Music", value: stats.songsListened },
+            { label: "Artists", value: stats.differentArtists },
+            { label: "Total Minutes Played", value: stats.minutesListened },
           ].map((stat, index) => (
             <div
               className="landingpage-stat-item"
@@ -144,8 +144,8 @@ const LandingPage = ({ onLogOff }) => {
         </div>
 
         <div className="landingpage-most-played">
-          <h3>“{stats.mostPlayedSong.title || "No Music Data"}”</h3>
-          <p>Most Played Music</p>
+          <h3>“{stats.mostPlayedSong.title || "No song listened"}”</h3>
+          <p>Most Played Song</p>
           {stats.mostPlayedSong.plays > 0 && (
             <p>{stats.mostPlayedSong.plays} minutes</p>
           )}
@@ -153,7 +153,7 @@ const LandingPage = ({ onLogOff }) => {
       </div>
 
       <footer className="landingpage-footer">
-        © 2024 Spotidados All Rights Reserved.
+        © 2024 Spotidados All rights reserved.
       </footer>
     </div>
   );
