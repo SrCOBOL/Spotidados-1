@@ -14,7 +14,7 @@ const Login = ({ onLogin }) => {
   return (
     <div className="login-container">
       <div className="login-form">
-        <h2>{isRegister ? "Create Account" : "Login"}</h2>
+        <h2>{isRegister ? "Create Account" : "Log-in"}</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Email</label>
@@ -27,7 +27,7 @@ const Login = ({ onLogin }) => {
           </div>
 
           <div className="form-group">
-            <label>Password</label>
+            <label>Senha</label>
             <input
               type="password"
               value={password}
@@ -37,7 +37,7 @@ const Login = ({ onLogin }) => {
           </div>
 
           <button type="submit" className="btn-submit">
-            {isRegister ? "Create" : "Login"}
+            {isRegister ? "Create" : "Log-in"}
           </button>
 
           <div className="toggle-register">
@@ -46,8 +46,8 @@ const Login = ({ onLogin }) => {
               style={{ cursor: "pointer", color: "#f56" }}
             >
               {isRegister
-                ? "Already have an account? Click here to enter"
-                : "Don't have an account? Click here to create account"}
+                ? "Already have an account? Click here to log in"
+                : "No account? Click here to create an account"}
             </span>
           </div>
         </form>
