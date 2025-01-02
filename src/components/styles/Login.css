@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -6,6 +12,7 @@
   background-color: #222;
   color: white;
   padding: 20px;
+  margin: 0;
 }
 
 .login-form {
@@ -58,7 +65,7 @@
   font-size: 18px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .btn-submit:hover {
@@ -72,4 +79,26 @@
 
 .toggle-register span {
   font-size: 14px;
+  color: #f56;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    padding: 20px;
+  }
+
+  .login-form h2 {
+    font-size: 20px;
+  }
+
+  .form-group input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .btn-submit {
+    font-size: 16px;
+  }
 }
