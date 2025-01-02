@@ -7,12 +7,12 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  box-sizing: border-box; /* Ensure padding doesn't break layout */
+  box-sizing: border-box;
 }
 
 .landingpage-header {
   background: #000;
-  width: 100%; /* Ensure the header stretches the full width */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,7 +22,7 @@
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  box-sizing: border-box; /* Ensure padding doesn't break layout */
+  box-sizing: border-box;
 }
 
 .header-logo {
@@ -35,7 +35,7 @@
 }
 
 .header-home {
-  position: static; /* Remove absolute positioning */
+  position: static;
 }
 
 .header-home button {
@@ -49,6 +49,7 @@
   font-weight: bold;
   text-transform: uppercase;
   transition: background 0.3s;
+  margin-left: 50px;
 }
 
 .header-home button:hover {
@@ -62,14 +63,14 @@
 }
 
 .header-social-logo {
-  height: 40px;
+  height: 20px;
   margin-right: 10px;
 }
 
 .header-logoff-button {
   background-color: #ff4d4d;
   color: white;
-  padding: 10px 20px;
+  padding: 10px 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -199,6 +200,7 @@
   margin-top: auto;
   font-size: 16px;
   text-align: center;
+  margin-top: 15px;
   color: #ffffff;
   background: #211d1d;
   width: 100%;
